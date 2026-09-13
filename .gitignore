@@ -24,17 +24,10 @@ data/chroma/
 models/qwen35_2b_lora/
 .tools/
 frontend-admin/node_modules/
-
-# Temporary debug / scratch files
-tmp_*.py
-.dbg/
-steps.zip
-
-# Virtual environments
 .venv/
 venv/
-ENV/
-
-# OS files
-*.swp
-*.swo
+.env.*
+.dbg/
+tmp_*.py
+steps.zip
+.dbg_*.log
