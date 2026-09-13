@@ -1,0 +1,2 @@
+﻿order_id,email,status,destination_country,currency,total,tracking_number,carrier,created_at,items
+ORD-HOT-1,demo@gulf.ae,Shipped,AE,AED,88.00,HOTTRACK1,Aramex,2026-07-14 12:00:00,TestItem x1

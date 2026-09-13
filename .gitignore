@@ -1,0 +1,40 @@
+.env
+.env.local
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+data/chroma/
+*.db
+models/qwen35_2b_lora/
+.tools/
+frontend-admin/node_modules/
+
+# Temporary debug / scratch files
+tmp_*.py
+.dbg/
+steps.zip
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# OS files
+*.swp
+*.swo

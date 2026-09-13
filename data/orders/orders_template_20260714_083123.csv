@@ -1,0 +1,2 @@
+order_id,email,status,destination_country,currency,total,tracking_number,carrier,created_at,items
+ORD-3001,demo@gulf.ae,Shipped,AE,AED,199.00,TRK001,Aramex,2024-08-01 12:00:00,手机壳 x2

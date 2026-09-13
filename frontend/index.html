@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>饺子 · 专属客服</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=33" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere-stripes"></div>
+    <div class="atmosphere-blob atmosphere-blob-a"></div>
+    <div class="atmosphere-blob atmosphere-blob-b"></div>
+    <div class="atmosphere-stamp">JIAOZI</div>
+  </div>
+
+  <div class="app">
+    <button type="button" id="sidebarToggle" class="sidebar-toggle" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true">
+          <img src="/assets/avatar-cs.png" alt="" class="avatar-img" />
+        </div>
+        <div class="brand-text">
+          <p class="brand-eyebrow">ONLINE</p>
+          <h1 class="brand-title" id="brandTitle">
+            <span class="type-ink">饺</span><span class="type-pink">子</span>
+          </h1>
+          <p class="brand-tag"><span class="type-mark">专属客服</span></p>
+        </div>
+        <a href="/admin/" class="admin-link" title="管理后台">后台</a>
+      </div>
+
+      <div id="connStatus" class="conn-status" data-state="connecting" aria-live="polite">连接中…</div>
+      <div id="degradedBanner" class="degraded-banner" hidden></div>
+
+      <div id="authPanel" class="auth-panel">
+        <p id="authStatus" class="auth-status">未登录</p>
+        <input id="loginEmail" type="email" placeholder="email@gulf.ae" class="auth-input" />
+        <input id="loginPassword" type="password" placeholder="密码" class="auth-input" />
+        <div class="auth-actions">
+          <button id="loginBtn" type="button" class="btn-secondary">登录</button>
+          <button id="registerBtn" type="button" class="btn-ghost">注册</button>
+          <button id="logoutBtn" type="button" class="btn-ghost" hidden>退出</button>
+        </div>
+        <details id="changePwdBox" class="change-pwd" hidden>
+          <summary>修改密码</summary>
+          <input id="oldPassword" type="password" placeholder="原密码" class="auth-input" />
+          <input id="newPassword" type="password" placeholder="新密码(≥6位)" class="auth-input" />
+          <button id="changePwdBtn" type="button" class="btn-secondary btn-block">保存新密码</button>
+        </details>
+      </div>
+
+      <button id="importOrdersBtn" type="button" class="btn-secondary btn-block">导入订单 CSV</button>
+
+      <div id="ordersPanel" class="orders-panel" hidden>
+        <h2 class="sidebar-subtitle" id="ordersTitle">我的订单</h2>
+        <ul id="ordersList" class="orders-list"></ul>
+      </div>
+
+      <div id="ticketsPanel" class="orders-panel" hidden>
+        <h2 class="sidebar-subtitle">我的工单</h2>
+        <ul id="ticketsList" class="orders-list"></ul>
+      </div>
+
+      <button id="newSession" type="button" class="btn-primary btn-block">新对话</button>
+
+      <div class="session-list-wrap">
+        <h2 class="sidebar-subtitle">历史会话</h2>
+        <ul id="sessionList" class="session-list"></ul>
+      </div>
+
+      <div id="sessionInfo" class="session-info"></div>
+    </aside>
+
+    <div class="sidebar-scrim" id="sidebarScrim" hidden></div>
+
+    <main class="chat">
+      <header class="chat-header">
+        <div class="chat-header-top">
+          <div class="agent-chip">
+            <img src="/assets/avatar-cs.png" alt="您的专属客服——饺子" class="agent-chip-avatar" />
+            <div>
+              <p class="agent-chip-name">饺子</p>
+              <p class="agent-chip-role">您的专属客服</p>
+            </div>
+          </div>
+          <div class="chat-header-copy">
+            <p class="chat-kicker"><span class="type-chip">DUMPLING DESK</span></p>
+            <h2 class="chat-heading" id="chatHeading">
+              <span class="type-ink">有事</span><span class="type-pink">直说</span>
+            </h2>
+          </div>
+        </div>
+        <div id="quickPrompts" class="quick-prompts"></div>
+        <div class="scene-grid scene-grid-bar" id="sceneGridBar"></div>
+      </header>
+
+      <div id="messages" class="messages">
+        <div class="welcome" id="welcomeState">
+          <div class="welcome-stage">
+            <img src="/assets/avatar-cs.png" alt="您的专属客服——饺子" class="welcome-avatar" />
+            <div class="welcome-burst" aria-hidden="true"></div>
+            <span class="welcome-online" aria-hidden="true"></span>
+            <span class="welcome-sticker welcome-sticker-a">热乎</span>
+            <span class="welcome-sticker welcome-sticker-b">在线</span>
+          </div>
+          <p class="welcome-agent"><span class="type-chip type-chip-soft">您的专属客服——饺子</span></p>
+          <p class="welcome-brand" id="welcomeBrand">
+            <span class="type-ink">饺</span><span class="type-pink">子</span>
+          </p>
+          <p class="welcome-lead">
+            <span class="type-lead-a">查订单</span>
+            <span class="type-dot">·</span>
+            <span class="type-lead-b">追物流</span>
+            <span class="type-dot">·</span>
+            <span class="type-lead-c">办退换</span>
+            <br />
+            <span class="type-lead-tail">丢给饺子就行。</span>
+          </p>
+          <div class="scene-grid" id="sceneGridWelcome"></div>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <textarea id="input" placeholder="跟饺子说点什么…" rows="2"></textarea>
+        <div class="input-actions">
+          <button id="cancel" type="button" class="btn-ghost" disabled>取消</button>
+          <button id="handoffBtn" type="button" class="btn-handoff">转人工</button>
+          <button id="send" type="button" class="btn-primary">发送</button>
+        </div>
+      </div>
+    </main>
+
+    <aside class="mascot-stage" id="mascotStage" aria-label="您的专属客服——饺子">
+      <div class="mascot-glow" aria-hidden="true"></div>
+      <div class="mascot-bubble" id="mascotBubble">
+        <p id="mascotBubbleText">有事直说，饺子在这～</p>
+      </div>
+      <div class="mascot-figure" id="mascotFigure">
+        <img
+          id="mascotAvatar"
+          class="mascot-avatar"
+          src="/assets/avatar-couch.png"
+          alt="巨大虚拟形象：饺子"
+        />
+        <span class="mascot-online" aria-hidden="true"></span>
+      </div>
+      <div class="mascot-platform" aria-hidden="true"></div>
+      <div class="mascot-caption">
+        <p class="mascot-name"><span class="type-ink">饺</span><span class="type-pink">子</span></p>
+        <p class="mascot-mood" id="mascotMoodLabel">在线待命</p>
+      </div>
+    </aside>
+  </div>
+
+  <div id="importOrdersModal" class="modal" hidden>
+    <div class="modal-backdrop" data-close-import></div>
+    <div class="modal-card" role="dialog" aria-labelledby="importOrdersTitle">
+      <header class="modal-header">
+        <h2 id="importOrdersTitle">导入订单 CSV</h2>
+        <button type="button" class="modal-close" data-close-import aria-label="关闭">×</button>
+      </header>
+      <p class="modal-desc">
+        选择 CSV 文件即可批量导入。导入后立即生效，客服可马上查到新订单。
+      </p>
+      <ol class="modal-steps">
+        <li>先下载模板，用 Excel 填写订单</li>
+        <li>保存为 CSV（UTF-8）后点下方按钮上传</li>
+      </ol>
+      <div class="modal-actions">
+        <button id="downloadOrdersTemplate" type="button" class="btn-secondary">下载模板</button>
+        <label class="btn-primary upload-label">
+          <span id="uploadOrdersLabel">选择 CSV 上传</span>
+          <input id="ordersCsvInput" type="file" accept=".csv,text/csv" hidden />
+        </label>
+      </div>
+      <label class="merge-check">
+        <input id="ordersMergeCheck" type="checkbox" checked />
+        合并导入（相同订单号会覆盖旧数据）
+      </label>
+      <p id="importOrdersMsg" class="modal-msg" hidden></p>
+      <div id="importOrdersPreview" class="import-preview" hidden></div>
+      <p id="importOrdersStats" class="modal-stats"></p>
+      <p class="modal-hint">
+        也可打开完整管理页：
+        <a href="/admin/orders" target="_blank" rel="noreferrer">订单导入后台</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="/config.js"></script>
+  <script src="vendor/marked.min.js"></script>
+  <script src="vendor/purify.min.js"></script>
+  <script src="i18n.js?v=7"></script>
+  <script src="app.js?v=37"></script>
+</body>
+</html>

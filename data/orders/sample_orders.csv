@@ -1,0 +1,4 @@
+order_id,email,status,destination_country,currency,total,tracking_number,carrier,created_at,items
+ORD-1001,demo@gulf.ae,Shipped,AE,AED,1299.00,DHL987654321,DHL Express,2024-07-01 10:00:00,智能手机 x1
+ORD-1002,demo@gulf.ae,Delivered,SA,SAR,899.00,ARX123456789,Aramex,2024-06-15 14:30:00,无线耳机 x1
+ORD-2001,alice@example.com,Processing,CN,CNY,4599.00,,SF Express,2024-07-10 09:00:00,笔记本电脑 x1
