@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 
 from src.core.config import PROJECT_ROOT, get_settings
 from src.services.user_service import hash_password, verify_password

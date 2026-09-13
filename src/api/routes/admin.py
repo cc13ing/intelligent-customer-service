@@ -355,7 +355,6 @@ async def admin_list_sessions(
     from sqlalchemy import func
 
     from src.models.message import Message
-    from src.models.session import ChatSession
     from src.redis_client import get_redis
     from src.services.session_service import SessionService
 

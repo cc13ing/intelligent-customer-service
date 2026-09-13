@@ -108,7 +108,8 @@ async def login(
     """邮箱 + 密码登录。"""
     # #region debug-point B:auth-login
     try:
-        import json, urllib.request
+        import json
+        import urllib.request
 
         _p = ".dbg/login-chat-timeout.env"
         _u = "http://127.0.0.1:7778/event"
@@ -116,8 +117,8 @@ async def login(
         try:
             with open(_p, encoding="utf-8") as _f:
                 _c = _f.read().splitlines()
-                _u = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SERVER_URL=")), _u)
-                _s = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SESSION_ID=")), _s)
+                _u = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SERVER_URL=")), _u)
+                _s = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SESSION_ID=")), _s)
         except Exception:
             pass
 

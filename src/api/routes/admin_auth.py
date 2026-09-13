@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Request, Response
+from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, Field
 
 from src.core.auth import create_access_token, try_decode_token

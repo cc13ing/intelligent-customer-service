@@ -359,7 +359,8 @@ async def websocket_chat(websocket: WebSocket):
     except HTTPException:
         # #region debug-point C:ws-unauthorized
         try:
-            import json as _json, urllib.request as _ur
+            import json as _json
+            import urllib.request as _ur
 
             _p = ".dbg/login-chat-timeout.env"
             _u = "http://127.0.0.1:7778/event"
@@ -367,8 +368,8 @@ async def websocket_chat(websocket: WebSocket):
             try:
                 with open(_p, encoding="utf-8") as _f:
                     _c = _f.read().splitlines()
-                    _u = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SERVER_URL=")), _u)
-                    _s = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SESSION_ID=")), _s)
+                    _u = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SERVER_URL=")), _u)
+                    _s = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SESSION_ID=")), _s)
             except Exception:
                 pass
             _ur.urlopen(
@@ -401,7 +402,8 @@ async def websocket_chat(websocket: WebSocket):
     await websocket.accept()
     # #region debug-point C:ws-accepted
     try:
-        import json as _json, urllib.request as _ur
+        import json as _json
+        import urllib.request as _ur
 
         _p = ".dbg/login-chat-timeout.env"
         _u = "http://127.0.0.1:7778/event"
@@ -409,8 +411,8 @@ async def websocket_chat(websocket: WebSocket):
         try:
             with open(_p, encoding="utf-8") as _f:
                 _c = _f.read().splitlines()
-                _u = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SERVER_URL=")), _u)
-                _s = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SESSION_ID=")), _s)
+                _u = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SERVER_URL=")), _u)
+                _s = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SESSION_ID=")), _s)
         except Exception:
             pass
         _ur.urlopen(
@@ -629,7 +631,8 @@ async def websocket_chat(websocket: WebSocket):
                 # #region debug-point D:ws-agent-start
                 _trace_id = f"{int(time.time() * 1000)}-{session_id}"
                 try:
-                    import json as _json, urllib.request as _ur
+                    import json as _json
+                    import urllib.request as _ur
 
                     _p = ".dbg/login-chat-timeout.env"
                     _u = "http://127.0.0.1:7778/event"
@@ -637,8 +640,8 @@ async def websocket_chat(websocket: WebSocket):
                     try:
                         with open(_p, encoding="utf-8") as _f:
                             _c = _f.read().splitlines()
-                            _u = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SERVER_URL=")), _u)
-                            _s = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SESSION_ID=")), _s)
+                            _u = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SERVER_URL=")), _u)
+                            _s = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SESSION_ID=")), _s)
                     except Exception:
                         pass
                     _ur.urlopen(
@@ -757,7 +760,8 @@ async def websocket_chat(websocket: WebSocket):
                     )
                     # #region debug-point D:ws-agent-done
                     try:
-                        import json as _json, urllib.request as _ur
+                        import json as _json
+                        import urllib.request as _ur
 
                         _p = ".dbg/login-chat-timeout.env"
                         _u = "http://127.0.0.1:7778/event"
@@ -765,8 +769,8 @@ async def websocket_chat(websocket: WebSocket):
                         try:
                             with open(_p, encoding="utf-8") as _f:
                                 _c = _f.read().splitlines()
-                                _u = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SERVER_URL=")), _u)
-                                _s = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SESSION_ID=")), _s)
+                                _u = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SERVER_URL=")), _u)
+                                _s = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SESSION_ID=")), _s)
                         except Exception:
                             pass
                         _ur.urlopen(
@@ -802,7 +806,9 @@ async def websocket_chat(websocket: WebSocket):
                     logger.exception("ws_chat_process_failed", session_id=session_id)
                     # #region debug-point D:ws-agent-exception
                     try:
-                        import json as _json, urllib.request as _ur, traceback as _tb
+                        import json as _json
+                        import urllib.request as _ur
+                        import traceback as _tb
 
                         _p = ".dbg/login-chat-timeout.env"
                         _u = "http://127.0.0.1:7778/event"
@@ -810,8 +816,8 @@ async def websocket_chat(websocket: WebSocket):
                         try:
                             with open(_p, encoding="utf-8") as _f:
                                 _c = _f.read().splitlines()
-                                _u = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SERVER_URL=")), _u)
-                                _s = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SESSION_ID=")), _s)
+                                _u = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SERVER_URL=")), _u)
+                                _s = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SESSION_ID=")), _s)
                         except Exception:
                             pass
                         _ur.urlopen(

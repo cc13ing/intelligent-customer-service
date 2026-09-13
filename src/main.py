@@ -141,7 +141,8 @@ def create_app() -> FastAPI:
     # #region debug-point B:request-validation
     @app.exception_handler(RequestValidationError)
     async def _debug_request_validation_handler(request: Request, exc: RequestValidationError):
-        import json, urllib.request, os
+        import json
+        import urllib.request
 
         _p = ".dbg/login-chat-timeout.env"
         _u = "http://127.0.0.1:7778/event"
@@ -149,8 +150,8 @@ def create_app() -> FastAPI:
         try:
             with open(_p, encoding="utf-8") as _f:
                 _c = _f.read().splitlines()
-                _u = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SERVER_URL=")), _u)
-                _s = next((l.split("=", 1)[1] for l in _c if l.startswith("DEBUG_SESSION_ID=")), _s)
+                _u = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SERVER_URL=")), _u)
+                _s = next((line.split("=", 1)[1] for line in _c if line.startswith("DEBUG_SESSION_ID=")), _s)
         except Exception:
             pass
 
